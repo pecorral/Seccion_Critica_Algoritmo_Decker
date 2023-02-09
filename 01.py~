@@ -6,7 +6,7 @@ from multiprocessing import Value, Array
 N = 8
 def task(common, tid, turn):
 	a = 0
-	for i in range(10):
+	for i in range(100):
 		print(f'{tid}−{i}: Non−critical Section')
 		a += 1
 		print(f'{tid}−{i}: End of non−critical Section')
@@ -21,8 +21,8 @@ def task(common, tid, turn):
 
 def main():
 	lp = []
-	common = Value('i', 0)
-	turn = Value('i', 0)
+	common = Value(’i’, 0)
+	turn = Value(’i’, 0)
 	for tid in range(N):
 		lp.append(Process(target=task, args=(common, tid, turn)))
 	print (f"Valor inicial del contador {common.value}")
